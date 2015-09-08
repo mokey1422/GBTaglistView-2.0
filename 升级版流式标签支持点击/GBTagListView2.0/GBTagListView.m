@@ -18,7 +18,14 @@
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 \
 alpha:1.0]
+@interface GBTagListView(){
+    
+    CGFloat KTagMargin;//左右tag之间的间距
+    CGFloat KBottomMargin;//上下tag之间的间距
+    
+}
 
+@end
 @implementation GBTagListView
 -(id)initWithFrame:(CGRect)frame{
     
@@ -33,14 +40,13 @@ alpha:1.0]
     
     
 }
+
 -(void)setTagWithTagArray:(NSArray*)arr{
     
     previousFrame = CGRectZero;
     [_tagArr addObjectsFromArray:arr];
     [arr enumerateObjectsUsingBlock:^(NSString*str, NSUInteger idx, BOOL *stop) {
-        
-
-        
+    
         UIButton*tagBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         tagBtn.frame=CGRectZero;
         
@@ -72,9 +78,22 @@ alpha:1.0]
         CGSize Size_str=[str sizeWithAttributes:attrs];
         Size_str.width += HORIZONTAL_PADDING*3;
         Size_str.height += VERTICAL_PADDING*3;
-        
         CGRect newRect = CGRectZero;
-        
+        if(KTagMargin&&KBottomMargin){
+            
+            if (previousFrame.origin.x + previousFrame.size.width + Size_str.width + KTagMargin > self.bounds.size.width) {
+                
+                newRect.origin = CGPointMake(10, previousFrame.origin.y + Size_str.height + KBottomMargin);
+                totalHeight +=Size_str.height + KBottomMargin;
+            }
+            else {
+                newRect.origin = CGPointMake(previousFrame.origin.x + previousFrame.size.width + KTagMargin, previousFrame.origin.y);
+                
+            }
+            [self setHight:self andHight:totalHeight+Size_str.height + KBottomMargin];
+  
+            
+        }else{
         if (previousFrame.origin.x + previousFrame.size.width + Size_str.width + LABEL_MARGIN > self.bounds.size.width) {
             
             newRect.origin = CGPointMake(10, previousFrame.origin.y + Size_str.height + BOTTOM_MARGIN);
@@ -83,6 +102,8 @@ alpha:1.0]
         else {
             newRect.origin = CGPointMake(previousFrame.origin.x + previousFrame.size.width + LABEL_MARGIN, previousFrame.origin.y);
             
+        }
+        [self setHight:self andHight:totalHeight+Size_str.height + BOTTOM_MARGIN];
         }
         newRect.size = Size_str;
         [tagBtn setFrame:newRect];
@@ -144,5 +165,10 @@ alpha:1.0]
 
     self.didselectItemBlock(arr);
     
+}
+-(void)setMarginBetweenTagLabel:(CGFloat)Margin AndBottomMargin:(CGFloat)BottomMargin{
+    
+    KTagMargin=Margin;
+    KBottomMargin=BottomMargin;
 }
 @end

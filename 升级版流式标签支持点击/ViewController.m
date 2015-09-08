@@ -25,8 +25,7 @@
     strArray=@[@"大好人",@"自定义流式标签",@"github",@"code4app",@"已婚",@"阳光开朗",@"慷慨大方帅气身材好",@"仗义",@"值得一交的朋友",@"值得一交的朋友",@"值得的交",@"值得一交的朋友",@"值得一交的朋友",@"大好人",@"自定义流式标签",@"github",@"code4app",@"已婚"];
     
     GBTagListView *tagList=[[GBTagListView alloc]initWithFrame:CGRectMake(0, 80, ScreenWidth, 0)];
-    
-    //注意如果要自定义tag的颜色和整体的背景色定义方法一定要写在setTagWithTagArray方法之前
+
     tagList.canTouch=YES;
     tagList.signalTagColor=[UIColor whiteColor];
     [tagList setTagWithTagArray:strArray];
@@ -37,12 +36,14 @@
         GBTagListView*selectItems=[[GBTagListView alloc]initWithFrame:CGRectMake(0,tagList.frame.origin.y+tagList.frame.size.height+40 , ScreenWidth, 0)];
         selectItems.signalTagColor=[UIColor whiteColor];
         selectItems.canTouch=NO;
+        [selectItems setMarginBetweenTagLabel:20 AndBottomMargin:20];
         [selectItems setTagWithTagArray:arr];
         [weakSelf.view addSubview:selectItems];
         _tempTag=selectItems;
         
         
     }];
+    
     [self.view addSubview:tagList];
     UILabel*tip=[[UILabel alloc]initWithFrame:CGRectMake(0, tagList.frame.origin.y+tagList.frame.size.height+10, ScreenWidth, 20)];
     tip.text=@"选中的标签是：";
