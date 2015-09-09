@@ -34,5 +34,5 @@
 * 该控件的高度是自适应的根据赋值数组里的数据变化可以不用设置，详细的使用方法在GBTagListView.h里都有说明<br>
 # 效果展示<br>
 ![image](https://github.com/mokey1422/gifResource/blob/master/2015-08-25%2023_29_41.gif)  <br>
-
+#近期暴露添加了一个接口来控制tag之间的间距包括左右间距和上下间距
  
