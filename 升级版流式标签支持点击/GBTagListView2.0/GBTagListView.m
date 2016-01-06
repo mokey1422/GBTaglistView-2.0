@@ -20,9 +20,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 \
 alpha:1.0]
 @interface GBTagListView(){
     
-    CGFloat KTagMargin;//左右tag之间的间距
-    CGFloat KBottomMargin;//上下tag之间的间距
-    
+
+    CGFloat _KTagMargin;//左右tag之间的间距
+    CGFloat _KBottomMargin;//上下tag之间的间距
+    NSInteger _kSelectNum;//实际选中的标签数
+
+
 }
 
 @end
@@ -35,6 +38,10 @@ alpha:1.0]
         totalHeight=0;
         self.frame=frame;
         _tagArr=[[NSMutableArray alloc]init];
+
+        
+
+
     }
     return self;
     
@@ -79,19 +86,20 @@ alpha:1.0]
         Size_str.width += HORIZONTAL_PADDING*3;
         Size_str.height += VERTICAL_PADDING*3;
         CGRect newRect = CGRectZero;
-        if(KTagMargin&&KBottomMargin){
+
+        if(_KTagMargin&&_KBottomMargin){
             
-            if (previousFrame.origin.x + previousFrame.size.width + Size_str.width + KTagMargin > self.bounds.size.width) {
+            if (previousFrame.origin.x + previousFrame.size.width + Size_str.width + _KTagMargin > self.bounds.size.width) {
                 
-                newRect.origin = CGPointMake(10, previousFrame.origin.y + Size_str.height + KBottomMargin);
-                totalHeight +=Size_str.height + KBottomMargin;
+                newRect.origin = CGPointMake(10, previousFrame.origin.y + Size_str.height + _KBottomMargin);
+                totalHeight +=Size_str.height + _KBottomMargin;
             }
             else {
-                newRect.origin = CGPointMake(previousFrame.origin.x + previousFrame.size.width + KTagMargin, previousFrame.origin.y);
+                newRect.origin = CGPointMake(previousFrame.origin.x + previousFrame.size.width + _KTagMargin, previousFrame.origin.y);
                 
             }
-            [self setHight:self andHight:totalHeight+Size_str.height + KBottomMargin];
-  
+            [self setHight:self andHight:totalHeight+Size_str.height + _KBottomMargin];
+
             
         }else{
         if (previousFrame.origin.x + previousFrame.size.width + Size_str.width + LABEL_MARGIN > self.bounds.size.width) {
@@ -111,10 +119,8 @@ alpha:1.0]
         [self setHight:self andHight:totalHeight+Size_str.height + BOTTOM_MARGIN];
         [self addSubview:tagBtn];
 
-        
-    }
-     
-     ];
+
+    }];
     if(_GBbackgroundColor){
         
         self.backgroundColor=_GBbackgroundColor;
@@ -125,7 +131,10 @@ alpha:1.0]
         
     }
     
+
+
     
+
 }
 #pragma mark-改变控件高度
 - (void)setHight:(UIView *)view andHight:(CGFloat)hight
@@ -150,25 +159,72 @@ alpha:1.0]
 -(void)didSelectItems{
     
     NSMutableArray*arr=[[NSMutableArray alloc]init];
-    for(UIView*view in self.subviews){
+
+
+    if(self.canTouchNum&&self.canTouch){
         
-        if([view isKindOfClass:[UIButton class]]){
+        if(_kSelectNum==self.canTouchNum-1){
             
-            UIButton*tempBtn=(UIButton*)view;
-            if (tempBtn.selected==YES) {
-                [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
+            for(UIView*view in self.subviews){
+                
+                UIButton*tempBtn=(UIButton*)view;
+                
+             if (tempBtn.selected==YES) {
+                 tempBtn.enabled=YES;
+               [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
+                 _kSelectNum=arr.count;
+                
+             }else{
+                 tempBtn.enabled=NO;
+                 
+             }
+        }
+            
+        }else{
+            
+            for(UIView*view in self.subviews){
+    
+            if([view isKindOfClass:[UIButton class]]){
+    
+                UIButton*tempBtn=(UIButton*)view;
+                tempBtn.enabled=YES;
+                if (tempBtn.selected==YES) {
+                    [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
+                    _kSelectNum=arr.count;
+                }
+                
             }
             
         }
-        
-    }
-
-    self.didselectItemBlock(arr);
+        }
+        self.didselectItemBlock(arr);
+        return;
     
+    }else{
+        
+        
+                for(UIView*view in self.subviews){
+        
+                    if([view isKindOfClass:[UIButton class]]){
+        
+                        UIButton*tempBtn=(UIButton*)view;
+                        if (tempBtn.selected==YES) {
+                            [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
+                        }
+        
+                    }
+            
+                }
+                self.didselectItemBlock(arr);
+    }
+    
+
 }
 -(void)setMarginBetweenTagLabel:(CGFloat)Margin AndBottomMargin:(CGFloat)BottomMargin{
     
-    KTagMargin=Margin;
-    KBottomMargin=BottomMargin;
+    _KTagMargin=Margin;
+    _KBottomMargin=BottomMargin;
+
 }
+
 @end

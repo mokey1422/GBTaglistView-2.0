@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84187F631C3CF97A00F1DEFF /* GBTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84187F621C3CF97A00F1DEFF /* GBTagListView.m */; };
 		84B74EC51B803C5B00453E70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B74EC41B803C5B00453E70 /* main.m */; };
 		84B74EC81B803C5B00453E70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B74EC71B803C5B00453E70 /* AppDelegate.m */; };
 		84B74ECB1B803C5B00453E70 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B74ECA1B803C5B00453E70 /* ViewController.m */; };
@@ -14,7 +15,6 @@
 		84B74ED01B803C5B00453E70 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B74ECF1B803C5B00453E70 /* Images.xcassets */; };
 		84B74ED31B803C5B00453E70 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B74ED11B803C5B00453E70 /* LaunchScreen.xib */; };
 		84B74EDF1B803C5B00453E70 /* ___________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B74EDE1B803C5B00453E70 /* ___________Tests.m */; };
-		84B74EEE1B80491700453E70 /* GBTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B74EED1B80491700453E70 /* GBTagListView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84187F611C3CF97A00F1DEFF /* GBTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBTagListView.h; sourceTree = "<group>"; };
+		84187F621C3CF97A00F1DEFF /* GBTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBTagListView.m; sourceTree = "<group>"; };
 		84B74EBF1B803C5B00453E70 /* 升级版流式标签支持点击.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "升级版流式标签支持点击.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B74EC31B803C5B00453E70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B74EC41B803C5B00453E70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,8 +43,6 @@
 		84B74ED81B803C5B00453E70 /* 升级版流式标签支持点击Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "升级版流式标签支持点击Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B74EDD1B803C5B00453E70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B74EDE1B803C5B00453E70 /* ___________Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___________Tests.m"; sourceTree = "<group>"; };
-		84B74EEC1B80491700453E70 /* GBTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBTagListView.h; sourceTree = "<group>"; };
-		84B74EED1B80491700453E70 /* GBTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBTagListView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +126,8 @@
 		84B74EEB1B80491700453E70 /* GBTagListView2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				84B74EEC1B80491700453E70 /* GBTagListView.h */,
-				84B74EED1B80491700453E70 /* GBTagListView.m */,
+				84187F611C3CF97A00F1DEFF /* GBTagListView.h */,
+				84187F621C3CF97A00F1DEFF /* GBTagListView.m */,
 			);
 			path = GBTagListView2.0;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 			files = (
 				84B74ECB1B803C5B00453E70 /* ViewController.m in Sources */,
 				84B74EC81B803C5B00453E70 /* AppDelegate.m in Sources */,
-				84B74EEE1B80491700453E70 /* GBTagListView.m in Sources */,
+				84187F631C3CF97A00F1DEFF /* GBTagListView.m in Sources */,
 				84B74EC51B803C5B00453E70 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +430,7 @@
 				84B74EE41B803C5B00453E70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84B74EE51B803C5B00453E70 /* Build configuration list for PBXNativeTarget "升级版流式标签支持点击Tests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +439,7 @@
 				84B74EE71B803C5B00453E70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

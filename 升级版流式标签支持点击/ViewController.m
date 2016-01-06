@@ -25,8 +25,10 @@
     strArray=@[@"大好人",@"自定义流式标签",@"github",@"code4app",@"已婚",@"阳光开朗",@"慷慨大方帅气身材好",@"仗义",@"值得一交的朋友",@"值得一交的朋友",@"值得的交",@"值得一交的朋友",@"值得一交的朋友",@"大好人",@"自定义流式标签",@"github",@"code4app",@"已婚"];
     
     GBTagListView *tagList=[[GBTagListView alloc]initWithFrame:CGRectMake(0, 80, ScreenWidth, 0)];
-
+    /**允许点击 */
     tagList.canTouch=YES;
+    /**可以控制允许点击的标签数 */
+    tagList.canTouchNum=5;
     tagList.signalTagColor=[UIColor whiteColor];
     [tagList setTagWithTagArray:strArray];
     __weak __typeof(self)weakSelf = self;
