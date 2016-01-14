@@ -49,8 +49,6 @@
  */
 @property(nonatomic) NSInteger canTouchNum;
 /**
-
-
  *  标签文本赋值
  */
 -(void)setTagWithTagArray:(NSArray*)arr;

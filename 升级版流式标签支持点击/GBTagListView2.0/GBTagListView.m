@@ -20,34 +20,26 @@ blue:((float)(rgbValue & 0xFF))/255.0 \
 alpha:1.0]
 @interface GBTagListView(){
     
-
     CGFloat _KTagMargin;//左右tag之间的间距
     CGFloat _KBottomMargin;//上下tag之间的间距
     NSInteger _kSelectNum;//实际选中的标签数
 
-
 }
-
 @end
 @implementation GBTagListView
 -(id)initWithFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
     if (self) {
-        
+        _kSelectNum=0;
         totalHeight=0;
         self.frame=frame;
         _tagArr=[[NSMutableArray alloc]init];
 
-        
-
-
     }
     return self;
     
-    
 }
-
 -(void)setTagWithTagArray:(NSArray*)arr{
     
     previousFrame = CGRectZero;
@@ -132,9 +124,6 @@ alpha:1.0]
     }
     
 
-
-    
-
 }
 #pragma mark-改变控件高度
 - (void)setHight:(UIView *)view andHight:(CGFloat)hight
@@ -157,68 +146,43 @@ alpha:1.0]
     
 }
 -(void)didSelectItems{
-    
+
     NSMutableArray*arr=[[NSMutableArray alloc]init];
-
-
-    if(self.canTouchNum&&self.canTouch){
-        
-        if(_kSelectNum==self.canTouchNum-1){
-            
-            for(UIView*view in self.subviews){
-                
-                UIButton*tempBtn=(UIButton*)view;
-                
-             if (tempBtn.selected==YES) {
-                 tempBtn.enabled=YES;
-               [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
-                 _kSelectNum=arr.count;
-                
-             }else{
-                 tempBtn.enabled=NO;
-                 
-             }
-        }
-            
-        }else{
-            
-            for(UIView*view in self.subviews){
     
-            if([view isKindOfClass:[UIButton class]]){
-    
-                UIButton*tempBtn=(UIButton*)view;
-                tempBtn.enabled=YES;
-                if (tempBtn.selected==YES) {
-                    [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
-                    _kSelectNum=arr.count;
-                }
-                
+    for(UIView*view in self.subviews){
+
+        if([view isKindOfClass:[UIButton class]]){
+
+            UIButton*tempBtn=(UIButton*)view;
+            tempBtn.enabled=YES;
+            if (tempBtn.selected==YES) {
+                [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
+                _kSelectNum=arr.count;
             }
             
         }
-        }
-        self.didselectItemBlock(arr);
-        return;
-    
-    }else{
         
-        
-                for(UIView*view in self.subviews){
-        
-                    if([view isKindOfClass:[UIButton class]]){
-        
-                        UIButton*tempBtn=(UIButton*)view;
-                        if (tempBtn.selected==YES) {
-                            [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
-                        }
-        
-                    }
-            
-                }
-                self.didselectItemBlock(arr);
     }
     
+    if(_kSelectNum==self.canTouchNum){
 
+        for(UIView*view in self.subviews){
+
+            UIButton*tempBtn=(UIButton*)view;
+
+         if (tempBtn.selected==YES) {
+             tempBtn.enabled=YES;
+             
+         }else{
+             tempBtn.enabled=NO;
+             
+         }
+    }
+    }
+    self.didselectItemBlock(arr);
+    
+   
+    
 }
 -(void)setMarginBetweenTagLabel:(CGFloat)Margin AndBottomMargin:(CGFloat)BottomMargin{
     

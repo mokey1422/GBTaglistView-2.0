@@ -33,7 +33,7 @@
     [tagList setTagWithTagArray:strArray];
     __weak __typeof(self)weakSelf = self;
     [tagList setDidselectItemBlock:^(NSArray *arr) {
-        NSLog(@"%@",arr);
+        NSLog(@"选中的标签%@",arr);
         [_tempTag removeFromSuperview];
         GBTagListView*selectItems=[[GBTagListView alloc]initWithFrame:CGRectMake(0,tagList.frame.origin.y+tagList.frame.size.height+40 , ScreenWidth, 0)];
         selectItems.signalTagColor=[UIColor whiteColor];
