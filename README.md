@@ -33,6 +33,30 @@
  ``` 
  
 * 该控件的高度是自适应的根据赋值数组里的数据变化可以不用设置，详细的使用方法在GBTagListView.h里都有说明<br>
+#升级版本2.1<br>
+##最近有一个网友说自己的项目里面也用到了这个东西但是需要限制点击的个数，为了答谢网友积极提出意见我添加了一个接口来控制允许点击的tag个数<br>
+## 超过这个限制数没有被选中的tag就不能被点击了只有取消选中项才能继续点击当然是在不超过限制数的基础上<br>
+* 新添加属性:<br>
+```
+/**
+
+ *  限制点击个数
+ *  0->不限制
+ *  不设置此属性默认不限制
+ */
+@property(nonatomic) NSInteger canTouchNum;
+```
+* 使用代码变动<br>
+```
+ GBTagListView *tagList=[[GBTagListView alloc]initWithFrame:CGRectMake(0, 80, ScreenWidth, 0)];
+    /**允许点击 */
+    tagList.canTouch=YES;
+    /**可以控制允许点击的标签数 */
+    tagList.canTouchNum=5;
+    tagList.signalTagColor=[UIColor whiteColor];
+    [tagList setTagWithTagArray:strArray];
+
+```
 # 效果展示<br>
 ![image](https://github.com/mokey1422/gifResource/blob/master/2015-08-25%2023_29_41.gif)  <br>
 
