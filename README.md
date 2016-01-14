@@ -57,6 +57,7 @@
     [tagList setTagWithTagArray:strArray];
 
 ```
+##2.2.0 修复bug，感谢网友提出bug，bug已经解决请自行更新。
 # 效果展示<br>
 ![image](https://github.com/mokey1422/gifResource/blob/master/2015-08-25%2023_29_41.gif)  <br>
 
