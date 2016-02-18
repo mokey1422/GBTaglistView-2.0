@@ -40,6 +40,10 @@
  *  回调统计选中tag
  */
 @property(nonatomic,copy)void (^didselectItemBlock)(NSArray*arr);
+
+/**
+ *  是否可点击
+ */
 @property(nonatomic) BOOL canTouch;
 /**
 
@@ -48,6 +52,10 @@
  *  不设置此属性默认不限制
  */
 @property(nonatomic) NSInteger canTouchNum;
+
+/** 单选模式,该属性的优先级要高于canTouchNum */
+
+@property(nonatomic) BOOL singleStyle;
 /**
  *  标签文本赋值
  */

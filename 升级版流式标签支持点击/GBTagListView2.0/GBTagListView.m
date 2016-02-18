@@ -23,6 +23,7 @@ alpha:1.0]
     CGFloat _KTagMargin;//左右tag之间的间距
     CGFloat _KBottomMargin;//上下tag之间的间距
     NSInteger _kSelectNum;//实际选中的标签数
+    UIButton*_tempBtn;//临时保存对象
 
 }
 @end
@@ -35,6 +36,8 @@ alpha:1.0]
         totalHeight=0;
         self.frame=frame;
         _tagArr=[[NSMutableArray alloc]init];
+        /**默认是多选模式 */
+        self.singleStyle=NO;
 
     }
     return self;
@@ -133,9 +136,17 @@ alpha:1.0]
     view.frame = tempFrame;
 }
 -(void)tagBtnClick:(UIButton*)button{
-    button.selected=!button.selected;
-    if(button.selected==YES){
+    if(_singleStyle){
+        _tempBtn.selected=NO;
+        _tempBtn.backgroundColor=[UIColor whiteColor];
+        button.selected=!button.selected;
+        _tempBtn=button;
+    }else{
         
+        button.selected=!button.selected;
+    }
+    
+    if(button.selected==YES){
         button.backgroundColor=[UIColor orangeColor];
     }else if (button.selected==NO){
         button.backgroundColor=[UIColor whiteColor];
@@ -159,13 +170,10 @@ alpha:1.0]
                 [arr addObject:_tagArr[tempBtn.tag-KBtnTag]];
                 _kSelectNum=arr.count;
             }
-            
         }
-        
     }
-    
     if(_kSelectNum==self.canTouchNum){
-
+        
         for(UIView*view in self.subviews){
 
             UIButton*tempBtn=(UIButton*)view;
@@ -181,7 +189,6 @@ alpha:1.0]
     }
     self.didselectItemBlock(arr);
     
-   
     
 }
 -(void)setMarginBetweenTagLabel:(CGFloat)Margin AndBottomMargin:(CGFloat)BottomMargin{
