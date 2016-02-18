@@ -55,7 +55,7 @@
 
 /** 单选模式,该属性的优先级要高于canTouchNum */
 
-@property(nonatomic) BOOL singleStyle;
+@property(nonatomic) BOOL isSingleSelect;
 /**
  *  标签文本赋值
  */

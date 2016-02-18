@@ -29,8 +29,8 @@
     tagList.canTouch=YES;
     /**可以控制允许点击的标签数 */
     tagList.canTouchNum=5;
-    /**danxu */
-    tagList.singleStyle=YES;
+    /**控制是否是单选模式 */
+    tagList.isSingleSelect=YES;
     tagList.signalTagColor=[UIColor whiteColor];
     [tagList setTagWithTagArray:strArray];
     __weak __typeof(self)weakSelf = self;

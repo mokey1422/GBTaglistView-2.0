@@ -37,7 +37,7 @@ alpha:1.0]
         self.frame=frame;
         _tagArr=[[NSMutableArray alloc]init];
         /**默认是多选模式 */
-        self.singleStyle=NO;
+        self.isSingleSelect=NO;
 
     }
     return self;
@@ -136,11 +136,20 @@ alpha:1.0]
     view.frame = tempFrame;
 }
 -(void)tagBtnClick:(UIButton*)button{
-    if(_singleStyle){
-        _tempBtn.selected=NO;
-        _tempBtn.backgroundColor=[UIColor whiteColor];
-        button.selected=!button.selected;
-        _tempBtn=button;
+    if(_isSingleSelect){
+        if(button.selected){
+            
+            button.selected=!button.selected;
+            
+        }else{
+            
+            _tempBtn.selected=NO;
+            _tempBtn.backgroundColor=[UIColor whiteColor];
+             button.selected=YES;
+            _tempBtn=button;
+            
+        }
+        
     }else{
         
         button.selected=!button.selected;
