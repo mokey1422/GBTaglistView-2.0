@@ -59,7 +59,10 @@
 ```
 ##2.2.0 修复bug，感谢网友提出bug，bug已经解决请自行更新。<br>
 ##2.2.1 之前的是只支持多选的，特增加一个接口可以控制单选或者是多选<br>
-# 效果展示<br>
-![image](https://github.com/mokey1422/gifResource/blob/master/2015-08-25%2023_29_41.gif)  <br>
-
+# 单选模式效果图<br>
+![](https://github.com/mokey1422/gifResourceOther/blob/master/2016-06-24%2010_12_38.gif)<br>
+# 多选效果展示<br>
+![image](https://github.com/mokey1422/gifResource/blob/master/2015-08-25%2023_29_41.gif)<br>
+# 限制点击个数效果图<br>
+![](https://github.com/mokey1422/gifResourceOther/blob/master/2016-06-24%2010_15_21.gif)<br>
  
